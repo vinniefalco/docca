@@ -26,21 +26,29 @@ struct Y
 */
 class issue_48
 {
-    /// This should not be emitted.
+    /// Friend, not emitted
     friend class X;
 
-    /// This should not be emitted.
+    /// Friend, not emitted
     friend struct Y;
 
-    /// This should be emitted
+    /// Friend, not emitted
     friend void g( issue_48 );
 
 public:
+    /// Member function, emitted
     void f();
 
-    /// This should be emitted
+    /// Friend, not emitted
     friend void h( issue_48 );
 };
+
+/// This should be emitted
+void g( issue_48 );
+
+/// This should be emitted
+void h( issue_48 );
+
 
 } // example
 
